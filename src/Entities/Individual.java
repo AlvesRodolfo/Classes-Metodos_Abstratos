@@ -25,15 +25,21 @@ public class Individual extends TaxPayer{
 
 	@Override
 	public double tax() {
+		//expressão condicional ternaria: se xxxx ? então fee recebe : caso contrario fee recebe
+		// double fee = (getAnualIncome() < 20000) ? (getAnualIncome() * 0.15) : (getAnualIncome() * 0.25)
+		
 		double fee = 0.0;
 		
-		if(super.getAnualIncome() < 20000) {
-			fee = (super.getAnualIncome() * 0.15) - (healthExpenditures*0.5);
+		if(getAnualIncome() < 20000) {
+			fee = (getAnualIncome() * 0.15) - (healthExpenditures*0.5);
 		}
 		else {
 			
-			fee = (super.getAnualIncome() * 0.25) - (healthExpenditures*0.5);
+			fee = (getAnualIncome() * 0.25) - (healthExpenditures*0.5);
 			
+		}
+		if(fee < 0.0) {
+			fee = 0.0;
 		}
 		return fee;
 	}
